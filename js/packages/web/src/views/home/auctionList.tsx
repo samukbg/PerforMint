@@ -172,19 +172,20 @@ export const AuctionListView = () => {
         
         {connected ? (
           <span className='title'>
-            <ConnectButton
+            <Button
               type="primary"
               size="large"
-              span="Demo Project"
-              style={{ marginTop: 24, width: 200 }}
+              href="#/art/create/0"
+              style={{ marginTop: 24, width: 200, color: 'white', paddingTop: '19px !important' }}
               className="action-btn"
-            />
+            >
+              Create a Project
+            </Button>
           </span>
         ) : (
           <ConnectButton
             type="primary"
             size="large"
-            value="Connect Wallet"
             style={{ marginTop: 24, width: 200 }}
             className="action-btn"
           />
