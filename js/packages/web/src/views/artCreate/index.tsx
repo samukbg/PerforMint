@@ -866,9 +866,11 @@ const RoyaltiesStep = (props: {
         </p>
       </Row>
       <Row className="content-action" style={{ marginBottom: 20 }}>
-        <label className="action-field">
+        <label className="action-field" style={{ flexDirection:'row', alignItems: 'center', marginLeft: 30 }}>
           <InputNumber
             autoFocus
+            placeholder="30.00"
+            aria-label=" $"
             onChange={(val: number) => {
               props.setAttributes({
                 ...props.attributes,
@@ -877,6 +879,7 @@ const RoyaltiesStep = (props: {
             }}
             className="royalties-input"
           />
+          <span style={{ marginLeft: 10 }}> $</span>
         </label>
       </Row>
       <Row>

@@ -1,5 +1,5 @@
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Col, Layout, Row, Tabs } from 'antd';
+import { Col, Layout, Row, Tabs, Button } from 'antd';
 import BN from 'bn.js';
 import React, { useMemo, useState } from 'react';
 import Masonry from 'react-masonry-css';
@@ -156,6 +156,23 @@ export const AuctionListView = () => {
 
   return (
     <>
+
+      <Col style={{ width: '100%', marginTop: 10 }}>
+        <span className='title'>
+          Realize your awesome performance project with instant funding!
+        </span>
+        
+        <span className='title'>
+          <Button
+            type="primary"
+            size="large"
+            style={{ marginTop: 24, width: 200 }}
+            className="action-btn"
+          >
+            Create a Project
+          </Button>
+        </span>
+      </Col>
       <PreSaleBanner auction={heroAuction} />
       <Layout>
         <Content style={{ display: 'flex', flexWrap: 'wrap' }}>

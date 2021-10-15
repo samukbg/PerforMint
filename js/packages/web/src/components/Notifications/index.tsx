@@ -544,7 +544,9 @@ export function Notifications() {
       content={content}
       trigger="click"
     >
-      <h1 className="title">PerforMint</h1>
+      <img 
+        src="/img/performint-logo.png"
+        style={{ width:'170px' }} />
     </Popover>
   );
 

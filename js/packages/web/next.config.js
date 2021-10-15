@@ -10,7 +10,7 @@ const plugins = [
       lessLoaderOptions: {
         lessOptions: {
           modifyVars: {
-            '@primary-color': '#df921e',
+            '@primary-color': '#768bf9',
             '@text-color': 'rgba(255, 255, 255)',
             '@assetPrefix': assetPrefix || "''",
           },
