@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd';
-
+import { Footer } from 'antd/lib/layout/layout';
 export const MetaplexModal = (props: any) => {
   const { children, bodyStyle, ...rest } = props;
 
@@ -15,7 +15,7 @@ export const MetaplexModal = (props: any) => {
         alignItems: 'center',
         ...bodyStyle,
       }}
-      footer={null}
+      footer={Footer}
       width={400}
       {...rest}
     >

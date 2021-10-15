@@ -1,22 +1,18 @@
 import React from 'react';
-import { GithubOutlined, TwitterOutlined } from '@ant-design/icons';
+import { GithubFilled, GithubOutlined, TwitterOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
 export const Footer = () => {
   return (
-    <div className={'footer'}>
+    <div className={'footer'} style={{ textAlign: 'center' }}>
+      <span className="field-title">PerforMint ©</span>
+      <br />
       <Button
         shape={'circle'}
         target={'_blank'}
-        href={'https://github.com/metaplex-foundation/metaplex'}
-        icon={<GithubOutlined />}
-        style={{ marginRight: '20px' }}
-      ></Button>
-      <Button
-        shape={'circle'}
-        target={'_blank'}
-        href={'https://twitter.com/solana'}
-        icon={<TwitterOutlined />}
+        href={'https://github.com/samukbg/performint/'}
+        icon={<GithubFilled />}
+        style={{ border: 0 }}
       ></Button>
     </div>
   );
