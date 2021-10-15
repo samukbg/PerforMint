@@ -1,5 +1,5 @@
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Col, Layout, Row, Tabs, Button } from 'antd';
+import { Col, Layout, Row, Tabs, Button, Divider } from 'antd';
 import BN from 'bn.js';
 import React, { useMemo, useState } from 'react';
 import Masonry from 'react-masonry-css';
@@ -9,6 +9,8 @@ import { CardLoader } from '../../components/MyLoader';
 import { PreSaleBanner } from '../../components/PreSaleBanner';
 import { useMeta } from '../../contexts';
 import { AuctionView, AuctionViewState, useAuctions } from '../../hooks';
+import { PerformancesView } from '..';
+import { ConnectButton } from '@oyster/common';
 
 const { TabPane } = Tabs;
 
@@ -157,70 +159,89 @@ export const AuctionListView = () => {
   return (
     <>
 
-      <Col style={{ width: '100%', marginTop: 10 }}>
+      <Col style={{ width: '100%', marginTop: 10, marginLeft: 20 }}>
         <span className='title'>
-          Realize your awesome performance project with instant funding!
+          Create your performance project and get instant funding
         </span>
+
+        <br />
+        <h3 style={{ marginLeft: 10 }}>The most innovative way for funding artists performance and record projects.</h3>
+        <h3 style={{ marginLeft: 10 }}>Private investors can joing the campaign to get monthly yield from artists generated profitable incomes! </h3>
+        <h3 style={{ marginLeft: 10 }}>Secured profit estimated in percentage based on the profitable performing projects.</h3>
+        <br />
         
-        <span className='title'>
-          <Button
+        {connected ? (
+          <span className='title'>
+            <ConnectButton
+              type="primary"
+              size="large"
+              span="Demo Project"
+              style={{ marginTop: 24, width: 200 }}
+              className="action-btn"
+            />
+          </span>
+        ) : (
+          <ConnectButton
             type="primary"
             size="large"
+            value="Connect Wallet"
             style={{ marginTop: 24, width: 200 }}
             className="action-btn"
-          >
-            Create a Project
-          </Button>
+          />
+        )}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div style={{ textAlign: 'center' }}>
+          <PerformancesView />
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <span className='title'>
+          Roadmap
         </span>
+        <Divider />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div style={{ textAlign: 'center' }}>
+          <img src='/img/roadmap.png' width='80%' />
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <span className='title'>
+          Our Team
+        </span>
+        <Divider />
+        <div style={{ textAlign: 'left', margin: -30 -50 }}>
+          <a href="mailto:samuelbg04@gmail.com?subject=PerforMint">
+            <img src='/img/contacts-img.png' width='60%' />
+          </a>
+        </div>
       </Col>
       <PreSaleBanner auction={heroAuction} />
       <Layout>
         <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Col style={{ width: '100%', marginTop: 10 }}>
-            {liveAuctions.length >= 0 && (
-              <Row>
-                <Tabs
-                  activeKey={activeKey}
-                  onTabClick={key => setActiveKey(key as LiveAuctionViewState)}
-                >
-                  <TabPane
-                    tab={<span className="tab-title">Live Auctions</span>}
-                    key={LiveAuctionViewState.All}
-                  >
-                    {liveAuctionsView}
-                  </TabPane>
-                  {auctionsEnded.length > 0 && (
-                    <TabPane
-                      tab={
-                        <span className="tab-title">Secondary Marketplace</span>
-                      }
-                      key={LiveAuctionViewState.Resale}
-                    >
-                      {liveAuctionsView}
-                    </TabPane>
-                  )}
-                  {auctionsEnded.length > 0 && (
-                    <TabPane
-                      tab={<span className="tab-title">Ended Auctions</span>}
-                      key={LiveAuctionViewState.Ended}
-                    >
-                      {endedAuctions}
-                    </TabPane>
-                  )}
-                  {
-                    // Show all participated live and ended auctions except hero auction
-                  }
-                  {connected && (
-                    <TabPane
-                      tab={<span className="tab-title">Participated</span>}
-                      key={LiveAuctionViewState.Participated}
-                    >
-                      {liveAuctionsView}
-                    </TabPane>
-                  )}
-                </Tabs>
-              </Row>
-            )}
+            <Divider />
+            <div style={{ textAlign: 'center' }}>
+              <p>
+                <br />
+                Contact
+              </p>
+              <a href="mailto:samuelbg04@gmail.com?subject=PerforMint">samuelbg04@gmail.com</a>
+            </div>
           </Col>
         </Content>
       </Layout>

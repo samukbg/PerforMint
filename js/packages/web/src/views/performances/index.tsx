@@ -62,7 +62,7 @@ export const PerformancesView = () => {
                   pubkey={m.pubkey}
                   preview={false}
                   height={250}
-                  width={250}
+                  width={400}
                 />
               </Link>
             );
@@ -81,7 +81,7 @@ export const PerformancesView = () => {
               onTabClick={key => setActiveKey(key as ArtworkViewState)}
             >
               <TabPane
-                tab={<span className="tab-title">All</span>}
+                tab={<span className="tab-title">Private Fund NFT</span>}
                 key={ArtworkViewState.Metaplex}
               >
                 {artworkGrid}
