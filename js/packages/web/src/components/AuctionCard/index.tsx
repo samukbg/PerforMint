@@ -510,7 +510,7 @@ export const AuctionCard = ({
           }}
         >
           Your {auctionView.isInstantSale ? 'purchase' : 'bid'} has been
-          redeemed please view your NFTs in <Link to="/artworks">My Items</Link>
+          redeemed please view your NFTs in <Link to="/performances">My Items</Link>
           .
         </p>
         <Button
@@ -760,7 +760,7 @@ export const AuctionCard = ({
                           style={{
                             float: 'right',
                             margin: '5px 20px',
-                            color: '#5870EE',
+                            color: '#9d6714',
                           }}
                         >
                           Add funds

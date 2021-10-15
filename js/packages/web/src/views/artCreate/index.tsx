@@ -147,10 +147,10 @@ export const ArtCreateView = () => {
                 maxWidth: '100%',
               }}
             >
-              <Step title="Category" />
+              <Step title="Promotion" />
               <Step title="Upload" />
               <Step title="Info" />
-              <Step title="Royalties" />
+              <Step title="Ticket Price" />
               <Step title="Launch" />
             </Steps>
           </Col>
@@ -232,10 +232,9 @@ const CategoryStep = (props: {
   return (
     <>
       <Row className="call-to-action">
-        <h2>Create a new item</h2>
+        <h2>Create a new project</h2>
         <p>
-          First time creating on Metaplex?{' '}
-          <a href="#">Read our creators’ guide.</a>
+          1. Choose an awesome image or video promotion of your performance:
         </p>
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
@@ -261,42 +260,6 @@ const CategoryStep = (props: {
               <div>
                 <div>Video</div>
                 <div className="type-btn-description">MP4, MOV</div>
-              </div>
-            </Button>
-          </Row>
-          <Row>
-            <Button
-              className="type-btn"
-              size="large"
-              onClick={() => props.confirm(MetadataCategory.Audio)}
-            >
-              <div>
-                <div>Audio</div>
-                <div className="type-btn-description">MP3, WAV, FLAC</div>
-              </div>
-            </Button>
-          </Row>
-          <Row>
-            <Button
-              className="type-btn"
-              size="large"
-              onClick={() => props.confirm(MetadataCategory.VR)}
-            >
-              <div>
-                <div>AR/3D</div>
-                <div className="type-btn-description">GLB</div>
-              </div>
-            </Button>
-          </Row>
-          <Row>
-            <Button
-              className="type-btn"
-              size="large"
-              onClick={() => props.confirm(MetadataCategory.HTML)}
-            >
-              <div>
-                <div>HTML Asset</div>
-                <div className="type-btn-description">HTML</div>
               </div>
             </Button>
           </Row>
@@ -370,13 +333,9 @@ const UploadStep = (props: {
   return (
     <>
       <Row className="call-to-action">
-        <h2>Now, let's upload your creation</h2>
+        <h2>Now, let's upload your performance art</h2>
         <p style={{ fontSize: '1.2rem' }}>
-          Your file will be uploaded to the decentralized web via Arweave.
-          Depending on file type, can take up to 1 minute. Arweave is a new type
-          of storage that backs data with sustainable and perpetual endowments,
-          allowing users and developers to truly store data forever – for the
-          very first time.
+          Depending on file type, can take up to 1 minute.
         </p>
       </Row>
       <Row className="content-action">
@@ -457,6 +416,7 @@ const UploadStep = (props: {
           </Dragger>
         </Row>
       )}
+      <br />
       <Form.Item
         style={{
           width: '100%',
@@ -530,7 +490,7 @@ const UploadStep = (props: {
           style={{ marginTop: 24 }}
           className="action-btn"
         >
-          Continue to Mint
+          Continue
         </Button>
       </Row>
     </>
@@ -610,7 +570,7 @@ const InfoStep = (props: {
   return (
     <>
       <Row className="call-to-action">
-        <h2>Describe your item</h2>
+        <h2>Describe your Performance</h2>
         <p>
           Provide detailed description of your creative process to engage with
           your audience.
@@ -678,7 +638,22 @@ const InfoStep = (props: {
             />
           </label>
           <label className="action-field">
-            <span className="field-title">Maximum Supply</span>
+            <span className="field-title">Minimum number of tickets to be sold approximately</span>
+            <InputNumber
+              placeholder="Quantity"
+              onChange={(val: number) => {
+                props.setAttributes({
+                  ...props.attributes,
+                  properties: {
+                    ...props.attributes.properties
+                  },
+                });
+              }}
+              className="royalties-input"
+            />
+          </label>
+          <label className="action-field">
+            <span className="field-title">Maximum number of Tickets to be created</span>
             <InputNumber
               placeholder="Quantity"
               onChange={(val: number) => {
@@ -727,16 +702,6 @@ const InfoStep = (props: {
                       <MinusCircleOutlined onClick={() => remove(name)} />
                     </Space>
                   ))}
-                  <Form.Item>
-                    <Button
-                      type="dashed"
-                      onClick={() => add()}
-                      block
-                      icon={<PlusOutlined />}
-                    >
-                      Add attribute
-                    </Button>
-                  </Form.Item>
                 </>
               )}
             </Form.List>
@@ -769,7 +734,7 @@ const InfoStep = (props: {
           }}
           className="action-btn"
         >
-          Continue to royalties
+          Continue
         </Button>
       </Row>
     </>
@@ -894,52 +859,26 @@ const RoyaltiesStep = (props: {
 
   return (
     <>
-      <Row className="call-to-action" style={{ marginBottom: 20 }}>
-        <h2>Set royalties and creator splits</h2>
+      <Row className="call-to-action">
+        <h2>Set a Ticket price</h2>
         <p>
-          Royalties ensure that you continue to get compensated for your work
-          after its initial sale.
+            This is the price that your audience will pay to see you performance
         </p>
       </Row>
       <Row className="content-action" style={{ marginBottom: 20 }}>
         <label className="action-field">
-          <span className="field-title">Royalty Percentage</span>
-          <p>
-            This is how much of each secondary sale will be paid out to the
-            creators.
-          </p>
           <InputNumber
             autoFocus
-            min={0}
-            max={100}
-            placeholder="Between 0 and 100"
             onChange={(val: number) => {
               props.setAttributes({
                 ...props.attributes,
-                seller_fee_basis_points: val * 100,
+                seller_fee_basis_points: 0,
               });
             }}
             className="royalties-input"
           />
         </label>
       </Row>
-      {[...fixedCreators, ...creators].length > 0 && (
-        <Row>
-          <label className="action-field" style={{ width: '100%' }}>
-            <span className="field-title">Creators Split</span>
-            <p>
-              This is how much of the proceeds from the initial sale and any
-              royalties will be split out amongst the creators.
-            </p>
-            <RoyaltiesSplitter
-              creators={[...fixedCreators, ...creators]}
-              royalties={royalties}
-              setRoyalties={setRoyalties}
-              isShowErrors={isShowErrors}
-            />
-          </label>
-        </Row>
-      )}
       <Row>
         <span
           onClick={() => setShowCreatorsModal(true)}
@@ -1102,13 +1041,6 @@ const LaunchStep = (props: {
           )}
         </Col>
         <Col className="section" style={{ minWidth: 300 }}>
-          <Statistic
-            className="create-statistic"
-            title="Royalty Percentage"
-            value={props.attributes.seller_fee_basis_points / 100}
-            precision={2}
-            suffix="%"
-          />
           {cost ? (
             <AmountLabel title="Cost to Create" amount={cost.toFixed(5)} />
           ) : (
@@ -1196,7 +1128,7 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT artwork on Metaplex, check it out!",
+      text: "I've created a new NFT artwork on PerforMint, check it out!",
       url: `${window.location.origin
         }/#/art/${props.nft?.metadataAccount.toString()}`,
       hashtags: 'NFT,Crypto,Metaplex',

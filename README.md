@@ -66,7 +66,7 @@ A notable and desirable effect of master editions is that as prints are sold, th
 
 A **print** represents a copy of an NFT, and is created from a Master Edition. Each print has an edition number associated with it.
 
-Usually, prints are created as a part of an auction that has happened on Metaplex, but they could also be created by the creator manually.
+Usually, prints are created as a part of an auction that has happened on PerforMint, but they could also be created by the creator manually.
 
 For limited auctions, each print number is awarded based on the bid placement.
 

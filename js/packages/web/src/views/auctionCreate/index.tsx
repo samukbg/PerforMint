@@ -694,7 +694,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>List an item</h2>
         <p>
-          First time listing on Metaplex? <a>Read our sellers' guide.</a>
+          First time listing on PerforMint? <a>Read our sellers' guide.</a>
         </p>
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
@@ -1926,7 +1926,7 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT auction on Metaplex, check it out!",
+      text: "I've created a new NFT auction on PerforMint, check it out!",
       url: `${
         window.location.origin
       }/#/auction/${props.auction?.auction.toString()}`,

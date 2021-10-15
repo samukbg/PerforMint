@@ -6,7 +6,7 @@ import {
   ArtistsView,
   ArtistView,
   ArtView,
-  ArtworksView,
+  PerformancesView,
   AuctionCreateView,
   AuctionView,
   HomeView,
@@ -33,8 +33,8 @@ export function Routes() {
             />
             <Route
               exact
-              path="/artworks/:id?"
-              component={() => <ArtworksView />}
+              path="/performances/:id?"
+              component={() => <PerformancesView />}
             />
             <Route exact path="/art/:id" component={() => <ArtView />} />
             <Route exact path="/artists/:id" component={() => <ArtistView />} />

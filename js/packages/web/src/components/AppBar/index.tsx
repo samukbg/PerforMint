@@ -55,9 +55,9 @@ const DefaultActions = ({ vertical = false }: { vertical?: boolean }) => {
       <Link to={`/`}>
         <Button className="app-btn">Explore</Button>
       </Link>
-      <Link to={`/artworks`}>
+      <Link to={`/performances`}>
         <Button className="app-btn">
-          {connected ? 'My Items' : 'Artworks'}
+          {connected ? 'My Performances' : 'Performances'}
         </Button>
       </Link>
       <Link to={`/artists`}>
@@ -86,7 +86,7 @@ const MetaplexMenu = () => {
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link to={`/artworks`}>
+                <Link to={`/performances`}>
                   <Button className="app-btn">
                     {connected ? 'My Items' : 'Artworks'}
                   </Button>
@@ -116,14 +116,15 @@ export const AppBar = () => {
       <div className="app-left app-bar-box">
         {window.location.hash !== '#/analytics' && <Notifications />}
         <div className="divider" />
-        <MetaplexMenu />
+        <MetaplexMenu />  
       </div>
       {connected ? (
         <div className="app-right app-bar-box">
           <UserActions />
+          <div className="divider" style={{ marginLeft:'20px' }} />
           <CurrentUserBadge
-            showBalance={false}
-            showAddress={false}
+            showBalance={true}
+            showAddress={true}
             iconSize={24}
           />
         </div>
